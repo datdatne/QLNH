@@ -4,7 +4,7 @@
  */
 package model;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
@@ -12,15 +12,19 @@ import java.util.Date;
  */
 public class HoaDon {
     private int MaHD;
-    private int MaKH;
     private Date NgayLap;
     private double TongTien;
+    private String trangThai;
+    private int MaBan;
+    private int MaKH;
 
-    public HoaDon(int MaHD, int MaKH, Date NgayLap, double TongTien) {
+    public HoaDon(int MaHD, Date NgayLap, double TongTien, String trangThai, int MaBan, int MaKH) {
         this.MaHD = MaHD;
-        this.MaKH = MaKH;
         this.NgayLap = NgayLap;
         this.TongTien = TongTien;
+        this.trangThai = trangThai;
+        this.MaBan = MaBan;
+        this.MaKH = MaKH;
     }
 
     public HoaDon() {
@@ -28,10 +32,6 @@ public class HoaDon {
 
     public int getMaHD() {
         return MaHD;
-    }
-
-    public int getMaKH() {
-        return MaKH;
     }
 
     public Date getNgayLap() {
@@ -42,12 +42,20 @@ public class HoaDon {
         return TongTien;
     }
 
-    public void setMaHD(int MaHD) {
-        this.MaHD = MaHD;
+    public String getTrangThai() {
+        return trangThai;
     }
 
-    public void setMaKH(int MaKH) {
-        this.MaKH = MaKH;
+    public int getMaBan() {
+        return MaBan;
+    }
+
+    public int getMaKH() {
+        return MaKH;
+    }
+
+    public void setMaHD(int MaHD) {
+        this.MaHD = MaHD;
     }
 
     public void setNgayLap(Date NgayLap) {
@@ -57,7 +65,21 @@ public class HoaDon {
     public void setTongTien(double TongTien) {
         this.TongTien = TongTien;
     }
-    
+
+    public void setTrangThai(String trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    public void setMaBan(int MaBan) {
+        this.MaBan = MaBan;
+    }
+
+    public void setMaKH(int MaKH) {
+        this.MaKH = MaKH;
+    }
+
+  
+
     
 }
 

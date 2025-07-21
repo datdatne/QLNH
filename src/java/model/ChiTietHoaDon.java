@@ -11,15 +11,19 @@ package model;
 public class ChiTietHoaDon {
     private int MaHD;
     private String MaMon;
+    private String TenMon;
     private int SoLuong;
-
-    public ChiTietHoaDon(int MaHD, String MaMon, int SoLuong) {
-        this.MaHD = MaHD;
-        this.MaMon = MaMon;
-        this.SoLuong = SoLuong;
-    }
+    private double DonGia;
 
     public ChiTietHoaDon() {
+    }
+
+    public ChiTietHoaDon(int MaHD, String MaMon, String TenMon, int SoLuong, double DonGia) {
+        this.MaHD = MaHD;
+        this.MaMon = MaMon;
+        this.TenMon = TenMon;
+        this.SoLuong = SoLuong;
+        this.DonGia = DonGia;
     }
 
     public int getMaHD() {
@@ -30,8 +34,16 @@ public class ChiTietHoaDon {
         return MaMon;
     }
 
+    public String getTenMon() {
+        return TenMon;
+    }
+
     public int getSoLuong() {
         return SoLuong;
+    }
+
+    public double getDonGia() {
+        return DonGia;
     }
 
     public void setMaHD(int MaHD) {
@@ -42,10 +54,19 @@ public class ChiTietHoaDon {
         this.MaMon = MaMon;
     }
 
+    public void setTenMon(String TenMon) {
+        this.TenMon = TenMon;
+    }
+
     public void setSoLuong(int SoLuong) {
         this.SoLuong = SoLuong;
     }
+
+    public void setDonGia(double DonGia) {
+        this.DonGia = DonGia;
+    }
+
     
-    
+   
 }
 

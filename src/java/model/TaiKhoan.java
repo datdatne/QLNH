@@ -12,7 +12,7 @@ public class TaiKhoan {
     public String TenDangNhap ;
     public String MatKhau;
     public int MaNV;
-    public String VaiTro;
+    public String VaiTro;   
 
     public TaiKhoan(String TenDangNhap, String MatKhau, int MaNV, String VaiTro) {
         this.TenDangNhap = TenDangNhap;

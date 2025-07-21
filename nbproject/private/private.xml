@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/dao/ChiTietHoaDonDAO.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/web/access_denied.jsp</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/model/KhoTaiChinh.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/controller/Login.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/web/chonban.jsp</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/dao/HoaDonDAO.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/controller/NhanVien.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/dao/KhachHangDAO.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/web/hoadon.jsp</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/model/NhanVien.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/model/MonAn.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/web/menu.jsp</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/dao/BanAnDAO.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/dao/NhanVienDAO.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/model/HoaDon.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/web/Logout.jsp</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/model/TaiKhoan.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/web/index.html</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/web/Login.jsp</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/controller/ThanhToanServlet.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/dao/ThongKeDAO.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/controller/ChonBanServlet.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/web/home_admin.jsp</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/dao/MonAnDAO.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/dao/DBConnect.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/dao/KhoTaiChinhDAO.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/controller/ThuNganXuLy.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/web/home_phucvu.jsp</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/web/cart.jsp</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/web/xemkhotaichinh.jsp</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/web/chitiethoadon.jsp</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/controller/ChiTietHoaDon.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/controller/ThongKeKhoTaiChinhServlet.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/controller/CapNhatBanServlet.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/utils/PhanQuyenUtil.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/model/ChiTietHoaDon.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/controller/DatHangServlet.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/model/CartItem.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/model/KhachHang.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/web/themkhachhang.jsp</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/controller/XemKhoTaiChinhServlet.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/controller/Cart.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/controller/DanhSachHoaDon.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/web/form_nhanvien.jsp</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/controller/Menu.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/controller/ThemKhachHang.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/src/java/dao/TaiKhoanDAO.java</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/web/danhsachhoadon.jsp</file>
+            <file>file:/C:/Projects/NetBeansProjects/Ql/QLNhaHangWeb/web/home_bep.jsp</file>
+        </group>
+    </open-files>
+</project-private>

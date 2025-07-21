@@ -8,8 +8,10 @@ import dao.MonAnDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -78,16 +80,20 @@ public class Cart extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getParameter("action"); // có thể là null, "decrease", "remove"
+         String action = request.getParameter("action"); // null, "decrease", "remove"
         String maMon = request.getParameter("maMon");
+        int maBan = Integer.parseInt(request.getParameter("maBan")); // bắt buộc có
+
+        // Key session giỏ hàng riêng cho từng bàn
+        String cartKey = "cart_ban_" + maBan;
 
         HttpSession session = request.getSession();
-        List<CartItem> cart = (List<CartItem>) session.getAttribute("cart");
+        List<CartItem> cart = (List<CartItem>) session.getAttribute(cartKey);
         if (cart == null) {
             cart = new ArrayList<>();
         }
 
-        // XỬ LÝ GIẢM SỐ LƯỢNG
+        // -------------------- XỬ LÝ GIẢM SỐ LƯỢNG --------------------
         if ("decrease".equals(action)) {
             Iterator<CartItem> iterator = cart.iterator();
             while (iterator.hasNext()) {
@@ -95,27 +101,27 @@ public class Cart extends HttpServlet {
                 if (item.getMon().getMaMon().equals(maMon)) {
                     int newQty = item.getSoLuong() - 1;
                     if (newQty <= 0) {
-                        iterator.remove(); // xóa nếu hết số lượng
+                        iterator.remove();
                     } else {
-                        item.setSoLuong(newQty); // giảm đi 1
+                        item.setSoLuong(newQty);
                     }
                     break;
                 }
             }
-            session.setAttribute("cart", cart);
-            response.sendRedirect("cart.jsp");
+            session.setAttribute(cartKey, cart);
+            response.sendRedirect("cart.jsp?maBan=" + maBan);
             return;
         }
 
-        // (TÙY CHỌN) XỬ LÝ XÓA HẲN MÓN
+        // -------------------- XỬ LÝ XÓA HẲN MÓN --------------------
         if ("remove".equals(action)) {
             cart.removeIf(item -> item.getMon().getMaMon().equals(maMon));
-            session.setAttribute("cart", cart);
-            response.sendRedirect("cart.jsp");
+            session.setAttribute(cartKey, cart);
+            response.sendRedirect("cart.jsp?maBan=" + maBan);
             return;
         }
 
-        // MẶC ĐỊNH: THÊM MÓN VÀO GIỎ
+        // -------------------- MẶC ĐỊNH: THÊM MÓN --------------------
         try {
             int soLuong = Integer.parseInt(request.getParameter("soLuong"));
             boolean daCo = false;
@@ -140,8 +146,9 @@ public class Cart extends HttpServlet {
             e.printStackTrace();
         }
 
-        session.setAttribute("cart", cart);
-        response.sendRedirect("Menu"); // quay lại menu.jsp
+        // Cập nhật giỏ và chuyển về menu
+        session.setAttribute(cartKey, cart);
+        response.sendRedirect("Menu?maBan=" + maBan);
     }
 
     /**

@@ -93,9 +93,9 @@ public class Login extends HttpServlet {
                     case "Bep":
                         res.sendRedirect("home_bep.jsp"); break;
                     case "ThuNgan":
-                        res.sendRedirect("home_thungan.jsp"); break;
+                        res.sendRedirect("DanhSachHoaDon"); break;
                     case "PhucVu":
-                        res.sendRedirect("home_phucvu.jsp"); break;
+                        res.sendRedirect("chonban.jsp"); break;
                     default:
                         res.sendRedirect("access_denied.jsp");
                 }

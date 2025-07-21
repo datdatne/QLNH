@@ -4,20 +4,28 @@
  */
 package controller;
 
+import dao.BanAnDAO;
+import dao.ChiTietHoaDonDAO;
+import dao.HoaDonDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.CartItem;
+import model.HoaDon;
 
 /**
  *
  * @author ACER
  */
-@WebServlet(name = "XacNhanThanhToanServlet", urlPatterns = {"/XacNhanThanhToanServlet"})
-public class XacNhanThanhToanServlet extends HttpServlet {
+@WebServlet(name = "ThanhToanServlet", urlPatterns = {"/ThanhToan"})
+public class ThanhToanServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,10 +44,10 @@ public class XacNhanThanhToanServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet XacNhanThanhToanServlet</title>");
+            out.println("<title>Servlet ThanhToanServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet XacNhanThanhToanServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ThanhToanServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -71,7 +79,47 @@ public class XacNhanThanhToanServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+      try {
+            int maBan = Integer.parseInt(request.getParameter("maBan"));
+            int maKH = Integer.parseInt(request.getParameter("maKH"));
+            double tongTien = Double.parseDouble(request.getParameter("tongTien"));
+
+            String cartKey = "cart_ban_" + maBan;
+            HttpSession session = request.getSession();
+            List<CartItem> cart = (List<CartItem>) session.getAttribute(cartKey);
+
+            if (cart == null || cart.isEmpty()) {
+                response.sendRedirect("cart.jsp?maBan=" + maBan + "&error=Giỏ hàng trống");
+                return;
+            }
+
+            // 1. Tạo hóa đơn mới
+            HoaDon hoaDon = new HoaDon();
+            hoaDon.setMaBan(maBan);
+            hoaDon.setMaKH(maKH);
+            hoaDon.setNgayLap(new Date(System.currentTimeMillis()));
+            hoaDon.setTongTien(tongTien);
+            hoaDon.setTrangThai("Chờ");
+
+            HoaDonDAO hoaDonDAO = new HoaDonDAO();
+            int maHD = hoaDonDAO.insertAndReturnId(hoaDon); 
+
+            // 2. Lưu chi tiết hóa đơn
+            ChiTietHoaDonDAO ctDAO = new ChiTietHoaDonDAO();
+            for (CartItem item : cart) {
+                ctDAO.themChiTiet(maHD, item.getMon().getMaMon(), item.getSoLuong(), item.getMon().getDonGia());
+            }
+            // 3. Xóa giỏ hàng
+            session.removeAttribute(cartKey);
+
+            // 4. Chuyển hướng về CapNhatBanServlet (để nhân viên chọn bàn khác)
+            response.sendRedirect("chonban.jsp");
+
+            // ✨ Lưu ý: Thu ngân sẽ tiếp tục xử lý hóa đơn ở DanhSachHoaDonServlet
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect("cart.jsp?error=Thanh toán thất bại");
+        }
     }
 
     /**

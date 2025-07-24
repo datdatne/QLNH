@@ -92,7 +92,7 @@ public class ThemKhachHang extends HttpServlet {
         kh.setEmail(email);
 
         // Giả sử insert() trả về mã khách hàng mới
-        int maKH = new KhachHangDAO().themKhachHang(kh);
+        int maKH = new KhachHangDAO().insert(kh);
 
         // Cập nhật trạng thái bàn thành "Đã đặt"
         new BanAnDAO().updateTrangThai(maBan, "Đã đặt");

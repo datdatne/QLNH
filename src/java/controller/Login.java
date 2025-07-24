@@ -72,45 +72,42 @@ public class Login extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse res)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String user = req.getParameter("username");
-        String pass = req.getParameter("password");
-        try {
-            TaiKhoanDAO dao = new TaiKhoanDAO();
-            TaiKhoan tk = dao.checkLogin(user, pass);
+         String user = request.getParameter("username");
+        String pass = request.getParameter("password");
 
-            if (tk != null) {
-                HttpSession session = req.getSession();
-                session.setAttribute("username", tk.getTenDangNhap());
-                session.setAttribute("vaitro", tk.getVaiTro());
-                session.setAttribute("manv", tk.getMaNV());
+        TaiKhoanDAO dao = new TaiKhoanDAO();
+        TaiKhoan tk = dao.checkLogin(user, pass);
 
-                // Điều hướng theo vai trò
-                switch (tk.getVaiTro()) {
-                    case "Admin":
-                        res.sendRedirect("home_admin.jsp"); break;
-                    case "Bep":
-                        res.sendRedirect("home_bep.jsp"); break;
-                    case "ThuNgan":
-                        res.sendRedirect("DanhSachHoaDon"); break;
-                    case "PhucVu":
-                        res.sendRedirect("chonban.jsp"); break;
-                    default:
-                        res.sendRedirect("access_denied.jsp");
-                }
+        if (tk != null) {
+            HttpSession session = request.getSession();
+            session.setAttribute("username", tk.getTenDangNhap());
+            session.setAttribute("vaitro", tk.getVaiTro());
+            session.setAttribute("manv  ", tk.getMaNV());
 
-            } else {
-                req.setAttribute("error", "Sai thông tin đăng nhập!");
-                req.getRequestDispatcher("login.jsp").forward(req, res);
+            switch (tk.getVaiTro()) {
+                case "Admin":
+                    response.sendRedirect("home_admin.jsp");
+                    break;
+                case "Bep":
+                    response.sendRedirect("home_bep.jsp");
+                    break;
+                case "ThuNgan":
+                    response.sendRedirect("DanhSachHoaDon");
+                    break;
+                case "PhucVu":
+                    response.sendRedirect("chonban.jsp");
+                    break;
+                default:
+                    response.sendRedirect("access_denied.jsp");
             }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            req.setAttribute("error", "Lỗi hệ thống!");
-            req.getRequestDispatcher("login.jsp").forward(req, res);
+        } else {
+            request.setAttribute("error", "Sai tài khoản hoặc mật khẩu!");
+            request.getRequestDispatcher("Login.jsp").forward(request, response);
         }
     }
+    
 
     /**
      * Returns a short description of the servlet.

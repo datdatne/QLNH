@@ -23,7 +23,7 @@ public class NhanVienDAO extends DBConnect {
                     rs.getInt("MaNV"),
                     rs.getString("HoTen"),
                     rs.getDate("NgaySinh"),
-                    rs.getString("ChucVu"),
+                  
                     rs.getString("SDT")
                 );
                 list.add(nv);
@@ -32,23 +32,24 @@ public class NhanVienDAO extends DBConnect {
         return list;
     }
       public void insert(NhanVien nv) throws SQLException {
-        String sql = "INSERT INTO nhanvien(HoTen, NgaySinh, ChucVu, SDT) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO nhanvien( MaNV ,HoTen, NgaySinh, SDT) VALUES (?, ?, ?, ?)";
         try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, nv.getHoTen());
-            ps.setDate(2, nv.getNgaySinh());
-            ps.setString(3, nv.getChucVu());
+            ps.setInt(1, nv.getMaNV());
+            ps.setString(2, nv.getHoTen());
+            ps.setDate(3, nv.getNgaySinh());
+           
             ps.setString(4, nv.getSDT());
             ps.executeUpdate();
         }
     }
       public void update(NhanVien nv) throws SQLException {
-        String sql = "UPDATE nhanvien SET HoTen=?, NgaySinh=?, ChucVu=?, SDT=? WHERE MaNV=?";
+        String sql = "UPDATE nhanvien SET HoTen=?, NgaySinh=?, SDT=? WHERE MaNV=?";
         try ( PreparedStatement ps = getConnection().prepareStatement(sql)) {
             ps.setString(1, nv.getHoTen());
             ps.setDate(2, nv.getNgaySinh());
-            ps.setString(3, nv.getChucVu());
-            ps.setString(4, nv.getSDT());
-            ps.setInt(5, nv.getMaNV());
+           
+            ps.setString(3, nv.getSDT());
+            ps.setInt(4, nv.getMaNV());
             ps.executeUpdate();
         }
     }
@@ -69,7 +70,6 @@ public class NhanVienDAO extends DBConnect {
                     rs.getInt("MaNV"),
                     rs.getString("HoTen"),
                     rs.getDate("NgaySinh"),
-                    rs.getString("ChucVu"),
                     rs.getString("SDT")
                 );
             }
@@ -77,3 +77,4 @@ public class NhanVienDAO extends DBConnect {
         return null;
     }
 }
+
